@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Back\ArticleController;
 use App\Http\Controllers\Back\CategoryController;
+use App\Http\Controllers\Back\ConfigController;
 use App\Http\Controllers\Back\DashboardController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\Front\ArticleController as FrontArticleController;
@@ -40,6 +41,9 @@ Route::middleware('auth')->group(function() {
     ])->middleware('userAccess:1');
 
     Route::resource('/users', UserController::class);
+    Route::resource('/config', ConfigController::class)->only([
+        'index', 'update'
+    ]);
 
     Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
      \UniSharp\LaravelFilemanager\Lfm::routes();

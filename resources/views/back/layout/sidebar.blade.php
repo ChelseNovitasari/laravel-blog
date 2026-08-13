@@ -24,14 +24,22 @@
                 </li>
 
                 @if (auth()->user()->role == 1)
-                <li class="nav-item"> <a class="nav-link d-flex align-items-center gap-2" href="{{ url('categories') }}"> <svg class="bi"
+                <li class="nav-item"> <a class="nav-link d-flex align-items-center justify-content-start ps-0" href="{{ url('categories') }}"> <svg class="bi"
                             aria-hidden="true">
-                            <use xlink:href="#cart"></use>
+                            <i class="bi bi-folder me-2"></i>
                         </svg>
                         Categories
                     </a>
                 </li>
                 @endif
+
+                <li class="nav-item"> <a class="nav-link d-flex align-items-center justify-content-start ps-0" href="{{ url('config') }}"> <svg class="bi"
+                            aria-hidden="true">
+                            <i class="bi bi-gear me-2"></i>
+                        </svg>
+                        Config
+                    </a>
+                </li>
 
                 <li class="nav-item"> <a class="nav-link d-flex align-items-center gap-2" href="{{ url('users') }}"> <svg class="bi"
                             aria-hidden="true">
