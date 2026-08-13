@@ -24,7 +24,6 @@ class SideWidgetProvider extends ServiceProvider
     public function boot(): void
     {
         view()->composer('front.layout.side-widget', function ($view) {
-            // $category = Category::latest()->get();
             $category = Category::withCount(['Articles' => function (Builder $query) {
                 $query->where('status', 1);
             }])->take(3)->latest()->get();

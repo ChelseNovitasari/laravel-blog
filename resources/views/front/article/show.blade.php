@@ -22,8 +22,14 @@
                     </div>
                     <h1 class="card-title">{{ $article->title }}</h1>
                     <p class="card-text">
-                        {!! ($article->desc) !!}
+                        {!! $article->desc !!}
                     </p>
+                    <div class="mt-5">
+                        <p style="front-size: 20px"><b>Share This</b></p>
+
+                        <a class="btn btn-primary" href="https://www.facebook.com/sharer.php?u={{ url()->current() }}" target="_blank"><i class="fab fa-facebook"></i>Facebook</a>
+                        <a class="btn btn-success" href="https://api.whatsapp.com/send?text={{ url()->current() }}" target="_blank"><i class="fab fa-whatsapp"></i>WhatsApp</a>
+                    </div>
                 </div>
             </div>
         </div>

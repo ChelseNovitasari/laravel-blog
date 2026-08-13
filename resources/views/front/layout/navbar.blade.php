@@ -20,7 +20,7 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">All Categories</a></li>
+                        <li><a class="dropdown-item" href="{{ url('all-category') }}">All Categories</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">About</a></li>

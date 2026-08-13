@@ -28,6 +28,7 @@ Route::get('/articles', [FrontArticleController::class, 'index']);
 Route::post('/articles/search', [FrontArticleController::class, 'index'])->name('search');
 
 Route::get('category/{slug}', [FrontCategoryController::class, 'index']);
+Route::get('all-category', [FrontCategoryController::class, 'allCategory']);
 
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index']);
