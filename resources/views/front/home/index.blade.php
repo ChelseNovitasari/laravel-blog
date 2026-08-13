@@ -14,7 +14,9 @@
                         alt="..." /></a>
 
                 <div class="card-body">
-                    <div class="small text-muted">{{ $latest_post->created_at->format('d-m-Y') }}</div>
+                    <div class="small text-muted">
+                        {{ $latest_post->created_at->format('d-m-Y') }} | {{ $latest_post->User->name }} | <a href="{{ url('category/'.$latest_post->Category->slug) }}">{{ $latest_post->Category->name }}</a>
+                    </div>
                     <h2 class="card-title">{{ $latest_post->title }}</h2>
                     <p class="card-text">
                         {{ Str::limit(strip_tags($latest_post->desc), 200, '...') }}
@@ -35,7 +37,7 @@
 
                         <div class="card-body card-height">
                             <div class="small text-muted">
-                                {{ $item->created_at->format('d-m-Y') }}
+                                {{ $item->created_at->format('d-m-Y') }} | {{ $item->User->name }} |
                                 <a href="{{ url('category/'.$item->Category->slug) }}">{{ $item->Category->name }}</a>
                             </div>
                             <h2 class="card-title h4">{{ $item->title }}</h2>

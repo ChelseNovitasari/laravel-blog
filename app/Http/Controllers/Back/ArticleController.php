@@ -7,7 +7,6 @@ use App\Http\Requests\ArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Models\Article;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
@@ -72,8 +71,8 @@ class ArticleController extends Controller
 
         $file->storeAs('back', $fileName, 'public');
 
+        $data['user_id'] = auth()->user()->id;
         $data['img'] = $fileName;
-
         $data['slug'] = Str::slug($data['title']);
 
         Article::create($data);
@@ -87,7 +86,7 @@ class ArticleController extends Controller
     public function show(string $id)
     {
         return view('back.article.show', [
-            'article' => Article::find($id)
+            'article' => Article::with(['User', 'Category'])->find($id)
         ]);
     }
 
@@ -124,6 +123,7 @@ class ArticleController extends Controller
     $data['img'] = $request->oldImg;
 }
 
+        $data['user_id'] = auth()->user()->id;
         $data['slug'] = Str::slug($data['title']);
 
         Article::find($id)->update($data);
