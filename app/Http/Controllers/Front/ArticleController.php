@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
-use App\Models\Category;
-use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
@@ -25,8 +23,7 @@ class ArticleController extends Controller
 
         return view('front.article.index', [
             'articles' => $articles,
-            'keyword' => $keyword,
-            'category_navbar' => Category::latest()->take(3)->get()
+            'keyword' => $keyword
         ]);
     }
 
@@ -36,9 +33,7 @@ class ArticleController extends Controller
         $article->increment('views');
 
         return view('front.article.show', [
-            'article' => $article,
-            'categories' => Category::latest()->get(),
-            'category_navbar' => Category::latest()->take(3)->get()
+            'article' => $article
         ]);
     }
 }
