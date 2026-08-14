@@ -4,8 +4,9 @@ namespace App\Providers;
 
 use App\Models\Article;
 use App\Models\Category;
-use Illuminate\Support\ServiceProvider;
+use App\Models\Config;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\ServiceProvider;
 use Pest\Support\View;
 
 class SideWidgetProvider extends ServiceProvider
@@ -33,7 +34,9 @@ class SideWidgetProvider extends ServiceProvider
 
         view()->composer('front.layout.side-widget', function ($view) {
             $posts = Article::orderBy('views', 'desc')->take(3)->get();
+            $config = Config::where('name', 'ads_widget')->pluck('value', 'name');
 
+            $view->with('config', $config);
             $view->with('popular_posts', $posts);
         });
 

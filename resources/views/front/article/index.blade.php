@@ -22,7 +22,7 @@
 
     <div class="row">
         @forelse ($articles as $item)
-        <div class="col-4" data-aos="zoom-in-up">
+        <div class="col-lg-4" data-aos="zoom-in-up">
             <!-- Blog post-->
             <div class="card mb-4 shadow">
                 <a href="{{ url('p/'.$item->slug) }}">

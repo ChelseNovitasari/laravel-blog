@@ -27,11 +27,11 @@
                         </p>
 
                         <ul>
-                            <li>Phone : +6283871500590</li>
-                            <li>Email : chelse@gmail.com</li>
-                            <li><a href="https://youtube.com/@mubateknologi">YouTube</a></li>
-                            <li><a href="https://facebook.com/@Laravel">Facebook</a></li>
-                            <li><a href="https://instagram.com/@laravelnews">Instagram</a></li>
+                            <li>Phone : {{ $config['phone'] }}</li>
+                            <li>Email : {{ $config['email'] }}</li>
+                            <li><a href="https://youtube.com/{{ $config['youtube'] }}">YouTube</a></li>
+                            <li><a href="https://facebook.com/{{ $config['facebook'] }}">Facebook</a></li>
+                            <li><a href="https://instagram.com/{{ $config['instagram'] }}">Instagram</a></li>
                         </ul>
                     </p>
                 </div>

@@ -18,7 +18,7 @@ class ArticleController extends Controller
                         ->latest()
                         ->paginate(6);
         } else {
-            $articles = Article::with('Category')->whereStatus(1)->latest()->paginate(12);
+            $articles = Article::with('Category')->whereStatus(1)->latest()->paginate(6);
         }
 
         return view('front.article.index', [
