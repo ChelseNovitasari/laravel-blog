@@ -1,5 +1,15 @@
 @extends('front.layout.template')
 
+@push('meta-seo')
+    <meta name="description" value="Blog Chelse Novitasari, Seputar Informasi Tranding dan Popular">
+    <meta name="keyword" value="blog chelse, blogchelse, blogchel">
+    <meta property="og:title" content="Laravel Blog - Chelse Novitasari" />
+    <meta property="og:url" value="{{ url()->current() }}">
+    <meta property="og:site_name" content="Blog Chelse Novitasari" />
+    <meta property="og:description" value="Blog Chelse Novitasari, Seputar Informasi Tranding dan Popular">
+    <meta property="og:image" value="{{ asset('storage/back/'.$latest_post->img) }}">
+@endpush
+
 @section('title', 'Laravel Blog - Chelse Novitasari')
 
 @section('content')

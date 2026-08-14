@@ -1,5 +1,15 @@
 @extends('front.layout.template')
 
+@push('meta-seo')
+    <meta name="description" value="Article Category Blog Chelse Novitasari, Seputar Informasi Tranding dan Popular">
+    <meta name="keyword" value="list article blog chelse, article blogchelse, artikel category blogchel">
+    <meta property="og:title" content="Article Blog - Chelse Novitasari" />
+    <meta property="og:url" value="{{ url()->current() }}">
+    <meta property="og:site_name" content="Blog Chelse Novitasari" />
+    <meta property="og:description" value="Article Category Blog Chelse Novitasari, Seputar Informasi Tranding dan Popular">
+    <meta property="og:image" value="https://mubatekno.com/front/assets/img/logo-vertikal.png">
+@endpush
+
 @section('title', 'Article Blog - Chelse Novitasari')
 
 @section('content')

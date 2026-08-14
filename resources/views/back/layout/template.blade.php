@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Astro v5.13.2">
-
+    <meta name="robots" content="noindex, nofollow">
     <title>@yield('title')</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/dashboard/">
@@ -185,7 +185,7 @@
                         <use xlink:href="#list"></use>
                     </svg> </button> </li>
         </ul>
-        
+
     </header>
     <div class="container-fluid">
         <div class="row">

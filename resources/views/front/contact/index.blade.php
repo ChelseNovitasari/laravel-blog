@@ -1,5 +1,15 @@
 @extends('front.layout.template')
 
+@push('meta-seo')
+    <meta name="description" value="Contact Blog Chelse Novitasari, Seputar Informasi Tranding dan Popular">
+    <meta name="keyword" value="contanct blog chelse, kontak blogchelse, kontak blogchel">
+    <meta property="og:title" content="Contact Laravel Blog - Chelse Novitasari" />
+    <meta property="og:url" value="{{ url()->current() }}">
+    <meta property="og:site_name" content="Blog Chelse Novitasari" />
+    <meta property="og:description" value="Contact Blog Chelse Novitasari, Seputar Informasi Tranding dan Popular">
+    <meta property="og:image" value="https://mubatekno.com/front/assets/img/logo-vertikal.png">
+@endpush
+
 @section('title', 'Contact Laravel Blog - Chelse Novitasari')
 
 @section('content')
