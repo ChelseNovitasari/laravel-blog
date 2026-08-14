@@ -9,6 +9,7 @@ use App\Http\Controllers\Front\ArticleController as FrontArticleController;
 use App\Http\Controllers\Front\CategoryController as FrontCategoryController;
 use App\Http\Controllers\Front\ContactController;
 use App\Http\Controllers\Front\HomeController;
+use App\Http\Controllers\Front\SitemapController;
 use App\Http\Middleware\UserAccess;
 use Illuminate\Routing\RouteUri;
 use Illuminate\Support\Facades\Auth;
@@ -19,6 +20,8 @@ use function Laravel\Prompts\search;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about', [HomeController::class, 'about']);
