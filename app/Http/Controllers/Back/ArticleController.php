@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Back;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Http\Services\ImageService;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
@@ -13,6 +14,8 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ArticleController extends Controller
 {
+    public function __construct(private ImageService $imageService){}
+
     /**
      * Display a listing of the resource.
      */
@@ -66,13 +69,10 @@ class ArticleController extends Controller
     {
         $data = $request->validated();
 
-        $file = $request->file('img');
-        $fileName = uniqid().'.'.$file->getClientOriginalExtension();
-
-        $file->storeAs('back', $fileName, 'public');
+        $uploadImage = $this->imageService->uploadImage($data);
 
         $data['user_id'] = auth()->user()->id;
-        $data['img'] = $fileName;
+        $data['img'] = $uploadImage;
         $data['slug'] = Str::slug($data['title']);
 
         Article::create($data);
@@ -108,20 +108,9 @@ class ArticleController extends Controller
     {
          $data = $request->validated();
 
-         if ($request->hasFile('img')) {
-    $file = $request->file('img');
-    $fileName = uniqid().'.'.$file->getClientOriginalExtension();
+         $uploadImage = $this->imageService->uploadImage($data, $request->oldImg);
 
-    $file->storeAs('back', $fileName, 'public');
-
-    if ($request->oldImg) {
-        Storage::disk('public')->delete('back/' . $request->oldImg);
-    }
-
-    $data['img'] = $fileName;
-} else {
-    $data['img'] = $request->oldImg;
-}
+        $data['img'] = $uploadImage;
 
         $data['user_id'] = auth()->user()->id;
         $data['slug'] = Str::slug($data['title']);
@@ -135,13 +124,20 @@ class ArticleController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        $data = Article::find($id);
-         Storage::disk('public')->delete('back/' . $data->img);
-         $data->delete();
+{
+    $data = Article::findOrFail($id);
 
-         return response()->json([
-            'message' => 'Data article has been deleted'
-         ]);
+    if ($data->img) {
+        Storage::disk('public')->delete([
+            'back/' . $data->img,
+            'back/thumbnail/' . $data->img
+        ]);
     }
+
+    $data->delete();
+
+    return response()->json([
+        'message' => 'Data article has been deleted'
+    ]);
+}
 }
